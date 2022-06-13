@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Figure, Image, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 function Home() {
   const style = {

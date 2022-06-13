@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import CategorieList from "./pages/Categories/CategorieList";
-import CategorieEdit from "./pages/Categories/CategorieEdit";
 import OfferList from "./pages/OfferList";
 import SubscriberList from "./pages/SubscriberList";
 import Login from "./pages/Authentication/Login";
@@ -10,6 +9,9 @@ import ErrorPage from "./pages/ErrorPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
 import { useEffect, useState } from "react";
+import SendEmail from "./pages/Email/SendEmail";
+import SentMessages from "./pages/Email/SentMessages";
+import Profile from "./pages/Authentication/Profile";
 
 function App() {
   const [user, setUser] = useState({ Email: "", Password: "" });
@@ -39,8 +41,10 @@ function App() {
           {LoggedIn}
           <Route path="/offer" element={<OfferList />} />
           <Route path="/categorie" element={<CategorieList />} />
-          <Route path="/categorie/edit/:Id" element={<CategorieEdit />} />
           <Route path="/subscriber" element={<SubscriberList />} />
+          <Route path="/send-email" element={<SendEmail />} />
+          <Route path="/sent-messages" element={<SentMessages />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>

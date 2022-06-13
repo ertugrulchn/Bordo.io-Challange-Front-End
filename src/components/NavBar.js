@@ -29,7 +29,7 @@ function NavBar() {
       return (
         <Nav>
           <NavDropdown title={`Hello ${user.UserName}`} id="basic-nav-dropdown">
-            <NavDropdown.Item href="">Profile</NavDropdown.Item>
+            <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
             <NavDropdown.Divider />
             <Button className="btn btn-warning w-100" onClick={LogOut}>
               Log Out
@@ -50,6 +50,12 @@ function NavBar() {
             <Nav.Link href="/categorie">Categories</Nav.Link>
             <Nav.Link href="/offer">Offers</Nav.Link>
             <Nav.Link href="/subscriber">Subscribers</Nav.Link>
+            <NavDropdown title={`Mail Transactions`} id="basic-nav-dropdown">
+              <NavDropdown.Item href="/send-email">Send Email</NavDropdown.Item>
+              <NavDropdown.Item href="/sent-messages">
+                Sent Messages
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           {LoggedIn()}
         </Navbar.Collapse>

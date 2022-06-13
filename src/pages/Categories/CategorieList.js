@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { Component, useState } from "react";
-import { Button, Card, Container, Form, Row, Table } from "react-bootstrap";
+import React, { Component } from "react";
+import { Button, Container, Form, Table } from "react-bootstrap";
 import { AiFillEdit } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 
@@ -35,10 +35,12 @@ class CategorieList extends Component {
       CategorieName: this.state.name,
       CategorieDescription: this.state.description,
     });
+    window.location.reload();
   };
 
   deleteCategorie = async (id) => {
     let data = api.delete(`/${id}`);
+    window.location.reload();
   };
 
   // TODO:Update Rewrite
@@ -48,12 +50,6 @@ class CategorieList extends Component {
   //     CategorieDescription: categorieDescription,
   //   });
   // };
-
-  writeData = (id, categorieName, categorieDescription) => {
-    this.state.name = categorieName;
-    this.state.description = categorieDescription;
-    console.log(this.state.name, this.state.description);
-  };
 
   render() {
     return (
@@ -75,10 +71,7 @@ class CategorieList extends Component {
                   <td>{categorie.CategorieName}</td>
                   <td>{categorie.CategorieDescription}</td>
                   <td>
-                    <a
-                      href={`/categorie/edit/${categorie.Id}`}
-                      className="btn btn-success"
-                    >
+                    <a href="#" className="btn btn-success">
                       <AiFillEdit />
                     </a>
                     <button
