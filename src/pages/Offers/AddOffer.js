@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Alert, Button, Container, Form, Modal, Table } from "react-bootstrap";
+import { Alert, Button, Container, Form} from "react-bootstrap";
 
 const api = axios.create({
   baseURL: `http://localhost:62287/api/Offer`,
@@ -17,7 +17,7 @@ function AddOffer() {
     });
   }, []);
 
-  const AddCategorie = (e) => {
+  const AddOffer = (e) => {
     e.preventDefault();
     const data = {
       OfferName: offers.OfferName,
@@ -48,14 +48,14 @@ function AddOffer() {
       <Form
         className="bg-light p-5"
         style={{ borderRadius: 20 }}
-        onSubmit={AddCategorie}
+        onSubmit={AddOffer}
       >
         <Form.Group className="mb-3">
           <Form.Label>Offer Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter Offer Name"
-            value={offers.name}
+            value={offers.OfferName}
             onChange={onChange}
             name="OfferName"
             required
@@ -68,7 +68,7 @@ function AddOffer() {
             className="form-control"
             placeholder="Enter Offer Description"
             rows={5}
-            value={offers.description}
+            value={offers.OfferDescription}
             onChange={onChange}
             name="OfferDescription"
             required
