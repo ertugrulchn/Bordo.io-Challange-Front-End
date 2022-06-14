@@ -11,6 +11,7 @@ function AddOffer() {
     OfferName: "",
     OfferDescription: "",
   });
+
   useEffect(() => {
     api.get("/").then((res) => {
       setOffers(res.data);
@@ -33,7 +34,6 @@ function AddOffer() {
   };
 
   const onChange = (e) => {
-    e.persist();
     setOffers({ ...offers, [e.target.name]: e.target.value });
   };
 

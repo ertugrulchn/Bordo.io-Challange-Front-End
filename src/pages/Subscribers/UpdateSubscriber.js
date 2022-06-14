@@ -4,28 +4,30 @@ import { useParams } from "react-router";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 
 const api = axios.create({
-  baseURL: `http://localhost:62287/api/Offer`,
+  baseURL: `http://localhost:62287/api/Subscriber`,
 });
 
-function UpdateOffer() {
+function UpdateSubscriber() {
   const { id } = useParams({});
-  const [offers, setOffers] = useState({
-    OfferName: "",
-    OfferDescription: "",
+  const [subscribers, setSubscriber] = useState({
+    FirstName: "",
+    LastName: "",
+    Mail: "",
   });
 
   useEffect(() => {
     api.get(`/${id}`).then((res) => {
-      setOffers(res.data);
+      setSubscriber(res.data);
     });
   }, []);
 
-  const UpdateOffer = (e) => {
+  const UpdateSubscriber = (e) => {
     e.preventDefault();
     const data = {
-      OfferId: offers.OfferId,
-      OfferName: offers.OfferName,
-      OfferDescription: offers.OfferDescription,
+      SubscriberId: subscribers.SubscriberId,
+      FirstName: subscribers.FirstName,
+      LastName: subscribers.LastName,
+      Mail: subscribers.Mail,
     };
     console.log(data);
     api.put(`/`, data).then((result) => {
@@ -38,7 +40,7 @@ function UpdateOffer() {
   };
 
   const onChange = (e) => {
-    setOffers({ ...offers, [e.target.name]: e.target.value });
+    setSubscriber({ ...subscribers, [e.target.name]: e.target.value });
   };
 
   return (
@@ -52,38 +54,47 @@ function UpdateOffer() {
       <Form
         className="bg-light p-5"
         style={{ borderRadius: 20 }}
-        onSubmit={UpdateOffer}
+        onSubmit={UpdateSubscriber}
       >
         <Form.Control
           type="text"
-          value={offers.OfferId}
+          value={subscribers.SubscriberId}
           name="CategoryId"
           hidden={true}
           required
         />
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Offer Name</Form.Label>
+        <Form.Group className="mb-3">
+          <Form.Label>First Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Offer Name"
-            value={offers.OfferName}
+            placeholder="Enter Fisrt Name"
+            value={subscribers.FirstName}
             onChange={onChange}
-            name="OfferName"
+            name="FirstName"
             required
           />
         </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Offer Description</Form.Label>
-          <textarea
-            className="form-control"
-            placeholder="Enter Offer Description"
-            rows={5}
-            value={offers.OfferDescription}
+        <Form.Group className="mb-3">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Last Name"
+            value={subscribers.LastName}
             onChange={onChange}
-            name="OfferDescription"
+            name="LastName"
             required
-          ></textarea>
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>Email Address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter Email Address"
+            value={subscribers.Mail}
+            onChange={onChange}
+            name="Mail"
+            required
+          />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
@@ -93,4 +104,4 @@ function UpdateOffer() {
   );
 }
 
-export default UpdateOffer;
+export default UpdateSubscriber;

@@ -38,7 +38,6 @@ function UpdateCategory(props) {
   };
 
   const onChange = (e) => {
-    const newState = { ...categories };
     setCategories({ ...categories, [e.target.name]: e.target.value });
   };
 
