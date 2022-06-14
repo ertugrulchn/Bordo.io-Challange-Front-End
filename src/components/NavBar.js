@@ -47,13 +47,34 @@ function NavBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/categorie">Categories</Nav.Link>
-            <Nav.Link href="/offer">Offers</Nav.Link>
+            <NavDropdown
+              title={`Offer Transactions`}
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item href="/add-offer">
+                Add Offer
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/offer">
+                Offer List
+              </NavDropdown.Item>
+            </NavDropdown>
+
             <Nav.Link href="/subscriber">Subscribers</Nav.Link>
             <NavDropdown title={`Mail Transactions`} id="basic-nav-dropdown">
               <NavDropdown.Item href="/send-email">Send Email</NavDropdown.Item>
               <NavDropdown.Item href="/sent-messages">
                 Sent Messages
+              </NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown
+              title={`Categorie Transactions`}
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item href="/add-categorie">
+                Add Categorie
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/categorie">
+                Categorie List
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

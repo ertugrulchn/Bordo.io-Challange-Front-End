@@ -5,19 +5,19 @@ import { AiFillEdit } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 const api = axios.create({
-  baseURL: `http://localhost:62287/api/Categorie`,
+  baseURL: `http://localhost:62287/api/Offer`,
 });
 
-function CategorieList() {
-  const [categories, setCategories] = useState([]);
+function OfferList() {
+  const [offers, setOffers] = useState([]);
 
   useEffect(() => {
     api.get("/").then((res) => {
-      setCategories(res.data);
+      setOffers(res.data);
     });
   }, []);
 
-  const deleteCategorie = (id) => {
+  const deleteOffer = (id) => {
     api.delete(`/${id}`);
     window.location.reload();
   };
@@ -28,27 +28,27 @@ function CategorieList() {
         <thead>
           <tr>
             <th>#</th>
-            <th>Categorie Name</th>
-            <th>Categorie Description</th>
+            <th>Offer Name</th>
+            <th>Offer Description</th>
             <th>Process</th>
           </tr>
         </thead>
         <tbody>
-          {categories.map((categorie) => (
-            <tr key={categorie.CategorieId}>
-              <td>{categorie.CategorieId}</td>
-              <td>{categorie.CategorieName}</td>
-              <td>{categorie.CategorieDescription.substring(0, 50)}...</td>
+          {offers.map((offer) => (
+            <tr key={offer.offerId}>
+              <td>{offer.OfferId}</td>
+              <td>{offer.OfferName}</td>
+              <td>{offer.OfferDescription.substring(0, 50)}...</td>
               <td>
                 <a
                   className="btn btn-success"
-                  href={`update-categorie/${categorie.CategorieId}`}
+                  href={`update-offer/${offer.OfferId}`}
                 >
                   <AiFillEdit />
                 </a>
                 <Button
                   variant="danger"
-                  onClick={() => deleteCategorie(categorie.CategorieId)}
+                  onClick={() => deleteOffer(offer.OfferId)}
                 >
                   <RiDeleteBinLine />
                 </Button>
@@ -61,4 +61,4 @@ function CategorieList() {
   );
 }
 
-export default CategorieList;
+export default OfferList;

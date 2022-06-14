@@ -11,12 +11,11 @@ function SentMessages() {
   useEffect(() => {
     api.get("/").then((res) => {
       setData(res.data);
-      console.log(res.data);
     });
   }, []);
 
   return (
-    <Container>
+    <Container className="mt-5">
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -32,7 +31,7 @@ function SentMessages() {
               <td>{message.EmailId}</td>
               <td>{message.RecipientEmail}</td>
               <td>{message.Subject}</td>
-              <td>{message.Message.substring(0, 80)}...</td>
+              <td>{message.Message.substring(0, 50)}...</td>
             </tr>
           ))}
         </tbody>
