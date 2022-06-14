@@ -1,4 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import CategorieList from "./pages/Categories/CategorieList";
 import OfferList from "./pages/OfferList";
@@ -21,30 +25,20 @@ function App() {
     setUser(parsedData);
   }, []);
 
-  function LoggedIn(props) {
-    if (user == null) {
-      return (
-        <>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </>
-      );
-    }
-  }
-
   return (
     <>
       <NavBar />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          {LoggedIn}
           <Route path="/offer" element={<OfferList />} />
           <Route path="/categorie" element={<CategorieList />} />
           <Route path="/subscriber" element={<SubscriberList />} />
           <Route path="/send-email" element={<SendEmail />} />
           <Route path="/sent-messages" element={<SentMessages />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Router>
