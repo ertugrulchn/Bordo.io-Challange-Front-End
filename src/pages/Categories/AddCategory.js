@@ -1,17 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Alert, Button, Container, Form, Modal, Table } from "react-bootstrap";
-import { AiFillEdit } from "react-icons/ai";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { Alert, Button, Container, Form } from "react-bootstrap";
 
 const api = axios.create({
-  baseURL: `http://localhost:62287/api/Categorie/`,
+  baseURL: `http://localhost:62287/api/Category/`,
 });
 
-function AddCategorie() {
+function AddCategory() {
   const [categories, setCategories] = useState({
-    CategorieName: "",
-    CategorieDescription: "",
+    CategoryName: "",
+    CategoryDescription: "",
   });
   useEffect(() => {
     api.get("/").then((res) => {
@@ -19,11 +17,11 @@ function AddCategorie() {
     });
   }, []);
 
-  const AddCategorie = (e) => {
+  const AddCategory = (e) => {
     e.preventDefault();
     const data = {
-      CategorieName: categories.CategorieName,
-      CategorieDescription: categories.CategorieDescription,
+      CategoryName: categories.CategoryName,
+      CategoryDescription: categories.CategoryDescription,
     };
     api.post("/", data).then((result) => {
       if (result.data.status == 200) {
@@ -35,7 +33,6 @@ function AddCategorie() {
   };
 
   const onChange = (e) => {
-    e.persist();
     setCategories({ ...categories, [e.target.name]: e.target.value });
   };
 
@@ -50,29 +47,29 @@ function AddCategorie() {
       <Form
         className="bg-light p-5"
         style={{ borderRadius: 20 }}
-        onSubmit={AddCategorie}
+        onSubmit={AddCategory}
       >
         <Form.Group className="mb-3">
-          <Form.Label>Categorie Name</Form.Label>
+          <Form.Label>Category Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Cateogrie Name"
-            value={categories.name}
+            placeholder="Enter Cateogry Name"
+            value={categories.CateogryName}
             onChange={onChange}
-            name="CategorieName"
+            name="CategoryName"
             required
           />
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label>Cateogire Description</Form.Label>
+          <Form.Label>Cateogiry Description</Form.Label>
           <textarea
             className="form-control"
-            placeholder="Enter Categorie Description"
+            placeholder="Enter Category Description"
             rows={5}
-            value={categories.description}
+            value={categories.CategoryDescription}
             onChange={onChange}
-            name="CategorieDescription"
+            name="CategoryDescription"
             required
           ></textarea>
         </Form.Group>
@@ -84,4 +81,4 @@ function AddCategorie() {
   );
 }
 
-export default AddCategorie;
+export default AddCategory;

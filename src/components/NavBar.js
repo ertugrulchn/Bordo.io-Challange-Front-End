@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 
@@ -67,14 +66,14 @@ function NavBar() {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown
-              title={`Categorie Transactions`}
+              title={`Category Transactions`}
               id="basic-nav-dropdown"
             >
-              <NavDropdown.Item href="/add-categorie">
-                Add Categorie
+              <NavDropdown.Item href="/add-category">
+                Add Category
               </NavDropdown.Item>
-              <NavDropdown.Item href="/categorie">
-                Categorie List
+              <NavDropdown.Item href="/category">
+                Category List
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

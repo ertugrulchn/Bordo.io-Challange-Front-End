@@ -4,41 +4,41 @@ import { useParams } from "react-router";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 
 const api = axios.create({
-  baseURL: `http://localhost:62287/api/Categorie`,
+  baseURL: `http://localhost:62287/api/Category`,
 });
 
-function UpdateCategorie(props) {
-  const { id } = useParams();
+function UpdateCategory(props) {
+  const { id } = useParams({});
   const [categories, setCategories] = useState({
-    CategorieName: "",
-    CategorieDescription: "",
+    CategoryName: "",
+    CategoryDescription: "",
   });
 
   useEffect(() => {
     api.get(`/${id}`).then((res) => {
       setCategories(res.data);
     });
-  });
+  }, []);
 
-  const UpdateCategorie = (e) => {
+  const UpdateCategory = (e) => {
     e.preventDefault();
     const data = {
-      CategorieId: categories.CategorieId,
-      CategorieName: categories.CategorieName,
-      CategorieDescription: categories.CategorieDescription,
+      CategoryId: categories.CategoryId,
+      CategoryName: categories.CategoryName,
+      CategoryDescription: categories.CategoryDescription,
     };
     console.log(data);
-    // api.put(`/`, data).then((result) => {
-    //   if (result.data.status == 200) {
-    //     var alert = document.getElementById("successAlert");
-    //     alert.classList.remove("invisible");
-    //     alert.innerText = result.data.message;
-    //   }
-    // });
+    api.put(`/`, data).then((result) => {
+      if (result.data.status == 200) {
+        var alert = document.getElementById("successAlert");
+        alert.classList.remove("invisible");
+        alert.innerText = result.data.message;
+      }
+    });
   };
 
   const onChange = (e) => {
-    e.persist();
+    const newState = { ...categories };
     setCategories({ ...categories, [e.target.name]: e.target.value });
   };
 
@@ -53,36 +53,36 @@ function UpdateCategorie(props) {
       <Form
         className="bg-light p-5"
         style={{ borderRadius: 20 }}
-        onSubmit={UpdateCategorie}
+        onSubmit={UpdateCategory}
       >
         <Form.Control
           type="text"
-          value={categories.CategorieId}
-          name="CategorieId"
+          value={categories.CategoryId}
+          name="CategoryId"
           hidden={true}
           required
         />
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Categorie Name</Form.Label>
+          <Form.Label>Category Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Cateogrie Name"
-            value={categories.CategorieName}
+            placeholder="Enter Cateogry Name"
+            value={categories.CategoryName}
             onChange={onChange}
-            name="CategorieName"
+            name="CategoryName"
             required
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Cateogire Description</Form.Label>
+          <Form.Label>Cateogiry Description</Form.Label>
           <textarea
             className="form-control"
-            placeholder="Enter Categorie Description"
+            placeholder="Enter Category Description"
             rows={5}
-            defaultValue={categories.CategorieDescription}
+            value={categories.CategoryDescription}
             onChange={onChange}
-            name="CategorieDescription"
+            name="CategoryDescription"
             required
           ></textarea>
         </Form.Group>
@@ -94,4 +94,4 @@ function UpdateCategorie(props) {
   );
 }
 
-export default UpdateCategorie;
+export default UpdateCategory;

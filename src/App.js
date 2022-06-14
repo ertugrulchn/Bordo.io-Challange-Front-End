@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import CategorieList from "./pages/Categories/CategorieList";
-import AddCategorie from "./pages/Categories/AddCategorie";
-import UpdateCategorie from "./pages/Categories/UpdateCategorie";
+import CategoryList from "./pages/Categories/CategoryList";
+import AddCategory from "./pages/Categories/AddCategory";
+import UpdateCategory from "./pages/Categories/UpdateCategory";
 import OfferList from "./pages/Offers/OfferList";
 import SubscriberList from "./pages/SubscriberList";
 import Login from "./pages/Authentication/Login";
@@ -36,9 +36,9 @@ function App() {
           <Route path="/add-offer" element={<AddOffer />} />
           <Route path="/update-offer/:id" element={<UpdateOffer />} />
           {/* Categori */}
-          <Route path="/categorie" element={<CategorieList />} />
-          <Route path="/add-categorie" element={<AddCategorie />} />
-          <Route path="/update-categorie/:id" element={<UpdateCategorie />} />
+          <Route path="/Category" element={<CategoryList />} />
+          <Route path="/add-Category" element={<AddCategory />} />
+          <Route path="/update-Category/:id" element={<UpdateCategory />} />
 
           {/* Subscriber */}
           <Route path="/subscriber" element={<SubscriberList />} />

@@ -5,10 +5,10 @@ import { AiFillEdit } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 const api = axios.create({
-  baseURL: `http://localhost:62287/api/Categorie`,
+  baseURL: `http://localhost:62287/api/Category`,
 });
 
-function CategorieList() {
+function CategoryList() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function CategorieList() {
     });
   }, []);
 
-  const deleteCategorie = (id) => {
+  const deleteCategory = (id) => {
     api.delete(`/${id}`);
     window.location.reload();
   };
@@ -34,21 +34,21 @@ function CategorieList() {
           </tr>
         </thead>
         <tbody>
-          {categories.map((categorie) => (
-            <tr key={categorie.CategorieId}>
-              <td>{categorie.CategorieId}</td>
-              <td>{categorie.CategorieName}</td>
-              <td>{categorie.CategorieDescription.substring(0, 50)}...</td>
+          {categories.map((category) => (
+            <tr key={category.CategoryId}>
+              <td>{category.CategoryId}</td>
+              <td>{category.CategoryName}</td>
+              <td>{category.CategoryDescription.substring(0, 50)}...</td>
               <td>
                 <a
                   className="btn btn-success"
-                  href={`update-categorie/${categorie.CategorieId}`}
+                  href={`update-category/${category.CategoryId}`}
                 >
                   <AiFillEdit />
                 </a>
                 <Button
                   variant="danger"
-                  onClick={() => deleteCategorie(categorie.CategorieId)}
+                  onClick={() => deleteCategory(category.CategoryId)}
                 >
                   <RiDeleteBinLine />
                 </Button>
@@ -61,4 +61,4 @@ function CategorieList() {
   );
 }
 
-export default CategorieList;
+export default CategoryList;
