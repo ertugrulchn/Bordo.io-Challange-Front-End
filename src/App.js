@@ -23,6 +23,7 @@ import UpdateOffer from "./pages/Offers/UpdateOffer";
 import SubscriberList from "./pages/Subscribers/SubscriberList";
 import AddSubscriber from "./pages/Subscribers/AddSubscriber";
 import UpdateSubscriber from "./pages/Subscribers/UpdateSubscriber";
+import AddSubscribersTable from "./pages/Subscribers/AddSubscribersTable";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           {/* Subscriber */}
           <Route path="/subscriber" element={<SubscriberList />} />
           <Route path="/add-subscriber" element={<AddSubscriber />} />
+          <Route path="/add-subscribers-table" element={<AddSubscribersTable />} />
           <Route path="/update-subscriber/:id" element={<UpdateSubscriber />} />
 
           {/* Email */}

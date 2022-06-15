@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Table } from "react-bootstrap";
+import PaginationItem from "../../components/PaginationItem";
 
 const api = axios.create({
   baseURL: `http://localhost:62287/api/Email/`,
@@ -8,11 +9,20 @@ const api = axios.create({
 
 function SentMessages() {
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemPerPage] = useState(5);
+
   useEffect(() => {
     api.get("/").then((res) => {
       setData(res.data);
     });
   }, []);
+
+  const indexOfLastItem = currentPage * itemPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemPerPage;
+  const currentItem = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <Container className="mt-5">
@@ -26,7 +36,7 @@ function SentMessages() {
           </tr>
         </thead>
         <tbody>
-          {data.map((message) => (
+          {currentItem.map((message) => (
             <tr>
               <td>{message.EmailId}</td>
               <td>{message.RecipientEmail}</td>
@@ -36,6 +46,11 @@ function SentMessages() {
           ))}
         </tbody>
       </Table>
+      <PaginationItem
+        itemPerPage={itemPerPage}
+        totalItems={data.length}
+        paginate={paginate}
+      />
     </Container>
   );
 }

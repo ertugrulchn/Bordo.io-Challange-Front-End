@@ -56,7 +56,7 @@ function AddSubscriber() {
           <Form.Label>First Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Fisrt Name"
+            placeholder="Enter First Name"
             value={subscribers.FirstName}
             onChange={onChange}
             name="FirstName"

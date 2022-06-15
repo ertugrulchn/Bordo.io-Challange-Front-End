@@ -58,6 +58,9 @@ function NavBar() {
               <NavDropdown.Item href="/add-subscriber">
                 Add Subscriber
               </NavDropdown.Item>
+              <NavDropdown.Item href="/add-subscribers-table">
+                Add Subscribers Table
+              </NavDropdown.Item>
               <NavDropdown.Item href="/subscriber">
                 Subscriber List
               </NavDropdown.Item>
