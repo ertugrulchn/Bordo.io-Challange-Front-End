@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { Component, useState } from "react";
-import { Alert, Button, Container, Form } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router";
 
 const api = axios.create({

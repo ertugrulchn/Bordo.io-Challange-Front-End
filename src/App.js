@@ -45,7 +45,10 @@ function App() {
           {/* Subscriber */}
           <Route path="/subscriber" element={<SubscriberList />} />
           <Route path="/add-subscriber" element={<AddSubscriber />} />
-          <Route path="/add-subscribers-table" element={<AddSubscribersTable />} />
+          <Route
+            path="/add-subscribers-table"
+            element={<AddSubscribersTable />}
+          />
           <Route path="/update-subscriber/:id" element={<UpdateSubscriber />} />
 
           {/* Email */}
